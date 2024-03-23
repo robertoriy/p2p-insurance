@@ -1,0 +1,41 @@
+services:
+  database:
+    image: 'postgres:16'
+    container_name: db-postgres
+    env_file: "./.env"
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - backend
+
+  migrations:
+    image: liquibase/liquibase:4.26
+    container_name: liquibase-migrations
+    env_file: "./.env"
+    depends_on:
+      - database
+    command:
+      - --changelog-file=changelog-main.yml
+      - --search-path=/liquibase/changelog/
+      - --driver=org.postgresql.Driver
+      - --url=jdbc:postgresql://db-postgres:5432/${DB_NAME}
+      - --username=${DB_USERNAME}
+      - --password=${DB_PASSWORD}
+      - update
+#      - update-to-tag
+#      - version_2
+#      - rollback
+#      - version_1
+#      - update-count
+#      - --count=2
+    volumes:
+      - ./liquibase/changelog/:/liquibase/changelog/
+    networks:
+      - backend
+
+networks:
+  backend: { }
