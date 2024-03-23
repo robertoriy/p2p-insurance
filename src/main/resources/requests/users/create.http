@@ -1,0 +1,43 @@
+### POST alisa
+POST http://localhost:8080/api/v1/users/
+Accept: application/json
+Content-Type: application/json
+
+{
+    "username":  "Alisa_1234",
+    "password": "0000",
+    "first_name":  "Alisa",
+    "surname":  "Doe",
+    "date_of_birth": "2000-01-01",
+    "ethereum_address": "0x61920393c0656571fc224b10300b0b02Dab2D5aA"
+}
+
+### POST bob
+POST http://localhost:8080/api/v1/users/
+Accept: application/json
+Content-Type: application/json
+
+{
+    "username":  "Bob_1234",
+    "password": "0000",
+    "first_name":  "Bob",
+    "surname":  "Johns",
+    "date_of_birth": "2000-01-01",
+    "ethereum_address": "0xa6ab395EFDc8ca6152F93d3EC72EC6428285fab5"
+}
+
+### POST alex
+POST http://localhost:8080/api/v1/users/
+Accept: application/json
+Content-Type: application/json
+
+{
+    "username":  "Alex_Doe_123",
+    "password": "0000",
+    "first_name":  "Alex",
+    "surname":  "Doe",
+    "date_of_birth": "2000-01-01",
+    "ethereum_address": "0xB01395C3992b361fF826C5B3878dd23942cC41BA"
+}
+
+

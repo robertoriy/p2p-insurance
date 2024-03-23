@@ -1,0 +1,26 @@
+### POST contribute 1
+POST http://localhost:8080/api/v1/users/1/groups/1/contract/contribute
+Accept: application/json
+Content-Type: application/json
+
+{
+    "private_key": "0xd8f15ecc9dbe5437ace1b0972f62170f79e52437dc2f0877108140e29141f606"
+}
+
+### POST contribute 2
+POST http://localhost:8080/api/v1/users/2/groups/1/contract/contribute
+Accept: application/json
+Content-Type: application/json
+
+{
+    "private_key": "0xe4f756be0081e4a64f40b3a9900fdaf96976a48fdd709b48b63529dac45392a5"
+}
+
+### POST contribute 3
+POST http://localhost:8080/api/v1/users/3/groups/1/contract/contribute
+Accept: application/json
+Content-Type: application/json
+
+{
+    "private_key": "0xc1b7ea7963acd7a293926c10b9a101b4e73fa5f4489e284c981087871a204fca"
+}
