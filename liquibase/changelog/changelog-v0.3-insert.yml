@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert_data
+      author: robertoriy
+      changes:
+        sqlFile:
+          path: migrations/data.sql
+          relativeToChangelogFile: true
+      rollback:
+        sqlFile:
+          path: migrations/delete_data.sql
+          relativeToChangelogFile: true

@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: init_schema
+      author: robertoriy
+      changes:
+        sqlFile:
+          path: migrations/schema.sql
+          relativeToChangelogFile: true
+      rollback:
+        sqlFile:
+          path: migrations/drop_tables.sql
+          relativeToChangelogFile: true

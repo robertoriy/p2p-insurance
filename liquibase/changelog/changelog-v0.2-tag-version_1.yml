@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: tag-version_1
+      author: robertoriy
+      changes:
+        tagDatabase:
+          tag: version_1
