@@ -11,15 +11,19 @@ import jakarta.persistence.Table;
 import java.time.OffsetDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Entity
-@Table(name = "insurance_transaction")
-@Data
+@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "insurance_transaction")
 public class InsuranceTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

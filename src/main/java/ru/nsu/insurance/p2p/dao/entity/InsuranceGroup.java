@@ -22,16 +22,18 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.proxy.HibernateProxy;
 
-@Entity
-@Table(name = "insurance_group")
-@Getter @Setter @ToString
+@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "insurance_group")
 public class InsuranceGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "title")
