@@ -12,11 +12,10 @@ import ru.nsu.insurance.p2p.dao.entity.UserProfile;
 import ru.nsu.insurance.p2p.dto.request.GroupRequest;
 import ru.nsu.insurance.p2p.dto.response.GroupResponse;
 import ru.nsu.insurance.p2p.mapper.GroupMapper;
+import ru.nsu.insurance.p2p.service.exception.GroupServiceException;
 import ru.nsu.insurance.p2p.service.exception.InsuranceAccessDeniedException;
 import ru.nsu.insurance.p2p.service.exception.existence.GroupNotFoundException;
-import ru.nsu.insurance.p2p.service.exception.GroupServiceException;
 import ru.nsu.insurance.p2p.service.exception.existence.UserNotFoundException;
-import ru.nsu.insurance.p2p.service.insurance.contract.Insurance;
 
 @RequiredArgsConstructor
 @Service

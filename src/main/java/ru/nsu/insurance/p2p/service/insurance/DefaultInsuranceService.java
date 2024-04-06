@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
+import org.web3j.tx.gas.StaticGasProvider;
 import ru.nsu.insurance.p2p.dao.ContractRepository;
 import ru.nsu.insurance.p2p.dao.GroupRepository;
 import ru.nsu.insurance.p2p.dao.UserRepository;
@@ -62,7 +63,7 @@ public class DefaultInsuranceService implements InsuranceService {
         try {
             contract.contribute(valueToContribute).send();
         } catch (Exception e) {
-            log.error("AAAAAAAAAAAAAa" + e.getMessage());
+            log.error("Error while contributing: {}", e.getMessage());
         }
     }
 
@@ -171,24 +172,12 @@ public class DefaultInsuranceService implements InsuranceService {
                 contractAddress,
                 web3j,
                 credentials,
-                EthereumUtils.GAS_PRICE,
-                EthereumUtils.GAS_LIMIT
+                new StaticGasProvider(EthereumUtils.GAS_PRICE, EthereumUtils.GAS_LIMIT)
             );
         } catch (Exception e) {
-            log.error("loading error: {}", e.getMessage());
+            log.error(e.getMessage());
             throw new InsuranceServiceException("Failed to load contract", e);
         }
-//        try {
-//            return Insurance.load(
-//                contractAddress,
-//                web3j,
-//                credentials,
-//                new DefaultGasProvider()
-//            );
-//        } catch (Exception e) {
-//            log.error(e.getMessage());
-//            throw new InsuranceServiceException("Failed to load contract", e);
-//        }
     }
 
     private void saveContract(long groupId, String contractAddress, long contributeValue) {
@@ -214,8 +203,7 @@ public class DefaultInsuranceService implements InsuranceService {
             return Insurance.deploy(
                 web3j,
                 credentials,
-                EthereumUtils.GAS_PRICE,
-                EthereumUtils.GAS_LIMIT,
+                new StaticGasProvider(EthereumUtils.GAS_PRICE, EthereumUtils.GAS_LIMIT),
                 ethereumValue,
                 addresses
             ).send();
@@ -223,18 +211,6 @@ public class DefaultInsuranceService implements InsuranceService {
             log.error(e.getMessage());
             throw new InsuranceServiceException("Failed to deploy contract", e);
         }
-//        try {
-//            return Insurance.deploy(
-//                web3j,
-//                credentials,
-//                new DefaultGasProvider(),
-//                ethereumValue,
-//                addresses
-//            ).send();
-//        } catch (Exception e) {
-//            log.error(e.getMessage());
-//            throw new InsuranceServiceException("Failed to deploy contract", e);
-//        }
     }
 
     private void pureRefund(long groupId, String privateKey) {

@@ -1,5 +1,7 @@
 package ru.nsu.insurance.p2p.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -8,8 +10,6 @@ import ru.nsu.insurance.p2p.dao.entity.UserProfile;
 import ru.nsu.insurance.p2p.dto.request.GroupRequest;
 import ru.nsu.insurance.p2p.dto.response.GroupResponse;
 import ru.nsu.insurance.p2p.dto.response.GroupShortResponse;
-import java.util.ArrayList;
-import java.util.List;
 
 @Mapper
 public interface GroupMapper {
