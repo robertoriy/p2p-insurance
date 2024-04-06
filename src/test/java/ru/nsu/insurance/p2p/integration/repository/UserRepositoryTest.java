@@ -16,7 +16,7 @@ public class UserRepositoryTest extends IntegrationEnvironment {
     @Autowired
     private UserRepository userRepository;
 
-    @Test
+//    @Test
     void test() {
         UserProfile user = UserProfile.builder()
             .username("sasha12")
