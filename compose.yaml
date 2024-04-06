@@ -1,4 +1,17 @@
+version: '3.8'
 services:
+  application:
+    build: .
+    container_name: application
+    env_file: "./.env"
+    ports:
+      - "${SERVICE_PORT}:${SERVICE_PORT}"
+    depends_on:
+      - database
+      - migrations
+    networks:
+      - backend
+
   database:
     image: 'postgres:16'
     container_name: db-postgres
@@ -37,5 +50,15 @@ services:
     networks:
       - backend
 
+#  ganache:
+#    image: trufflesuite/ganache:latest
+#    env_file: "./.env"
+#    container_name: ganache
+#    ports:
+#      - "${ETHEREUM_PORT}:${ETHEREUM_PORT}"
+#    networks:
+#      - backend
+
 networks:
-  backend: { }
+  backend:
+    driver: bridge

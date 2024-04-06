@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - include:
+      file: changelog-v0.0-tag-version_0.yml
+  - include:
+      file: changelog-v0.1-init_tables.yml
+  - include:
+      file: changelog-v0.2-tag-version_1.yml
+  - include:
+      file: changelog-v0.3-insert.yml
+  - include:
+      file: changelog-v0.4-tag-version_2.yml
