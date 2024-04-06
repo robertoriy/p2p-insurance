@@ -9,29 +9,3 @@ Content-Type: application/json
     },
     "contribute_eth_value": 20
 }
-
-####
-#
-## curl http://localhost:8545 -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":1}'
-#POST http://localhost:8545
-#Content-Type: application/json
-#
-#{
-#    "jsonrpc": "2.0",
-#    "method": "eth_accounts",
-#    "params": [],
-#    "id": 1
-#}
-#
-####
-#POST http://localhost:8545
-#Content-Type: application/json
-#
-#{
-#    "jsonrpc": "2.0",
-#    "method": "eth_getBalance",
-#    "params": ["0x4ee77b7fb2e52864ab2db6c96ef7ae9065395c22", "latest"],
-#    "id": 1
-#}
-
-
