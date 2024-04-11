@@ -1,5 +1,7 @@
 package ru.nsu.insurance.p2p.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,7 @@ import ru.nsu.insurance.p2p.service.exception.UserServiceException;
 import ru.nsu.insurance.p2p.service.exception.existence.NotFoundException;
 import ru.nsu.insurance.p2p.service.user.UserService;
 
+@Tag(name = "User Controller", description = "Контроллер для управления пользователями")
 @Slf4j
 @RequiredArgsConstructor
 @RestController
@@ -26,6 +29,7 @@ import ru.nsu.insurance.p2p.service.user.UserService;
 public class UserController {
     private final UserService userService;
 
+    @Operation(summary = "Создать пользователя")
     @PostMapping(value = "/")
     public ResponseEntity<UserResponse> addUser(
         @RequestBody UserRequest userRequest
@@ -42,6 +46,7 @@ public class UserController {
         }
     }
 
+    @Operation(summary = "Получить список всех пользователей")
     @GetMapping(value = "/")
     public ResponseEntity<List<UserResponse>> getUsers() {
         try {
@@ -53,6 +58,7 @@ public class UserController {
         }
     }
 
+    @Operation(summary = "Получить информацию о конкретном пользователе")
     @GetMapping(value = "/{user_id}")
     public ResponseEntity<UserResponse> getUserById(
         @PathVariable("user_id") long userId
@@ -69,6 +75,7 @@ public class UserController {
         }
     }
 
+    @Operation(summary = "Обновить информацию о существующем пользователе")
     @PutMapping(value = "/{user_id}")
     public ResponseEntity<UserResponse> updateUser(
         @PathVariable("user_id") long userId,
@@ -89,6 +96,7 @@ public class UserController {
         }
     }
 
+    @Operation(summary = "Удалить пользователя")
     @DeleteMapping(value = "/{user_id}")
     public ResponseEntity<HttpStatus> deleteUser(
         @PathVariable("user_id") long userId
