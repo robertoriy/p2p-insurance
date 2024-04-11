@@ -1,5 +1,7 @@
 package ru.nsu.insurance.p2p.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,7 @@ import ru.nsu.insurance.p2p.service.exception.InsuranceServiceException;
 import ru.nsu.insurance.p2p.service.exception.existence.NotFoundException;
 import ru.nsu.insurance.p2p.service.insurance.InsuranceService;
 
+@Tag(name = "Insurance Controller", description = "Контроллер для управления смарт-контрактом в страховой группе")
 @Slf4j
 @RequiredArgsConstructor
 @RestController
@@ -24,6 +27,7 @@ import ru.nsu.insurance.p2p.service.insurance.InsuranceService;
 public class InsuranceController {
     private final InsuranceService insuranceService;
 
+    @Operation(summary = "Инициировать создание смарт-контракта")
     @PostMapping(value = "/{user_id}/groups/{group_id}/contract")
     public ResponseEntity<ContractResponse> deployContract(
         @PathVariable("user_id") long userId,
@@ -48,6 +52,7 @@ public class InsuranceController {
         }
     }
 
+    @Operation(summary = "Внести взнос")
     @PostMapping(value = "/{user_id}/groups/{group_id}/contract/contribute")
     public ResponseEntity<ContractResponse> contribute(
         @PathVariable("user_id") long userId,
@@ -72,6 +77,7 @@ public class InsuranceController {
         }
     }
 
+    @Operation(summary = "Запросить возврат средств всем участникам")
     @PostMapping(value = "/{user_id}/groups/{group_id}/contract/refund")
     public ResponseEntity<ContractResponse> refund(
         @PathVariable("user_id") long userId,
@@ -96,6 +102,7 @@ public class InsuranceController {
         }
     }
 
+    @Operation(summary = "Заявить о наступлении страхового случая")
     @PostMapping(value = "/{user_id}/groups/{group_id}/contract/insurance_event")
     public ResponseEntity<ContractResponse> reportInsuranceEvent(
         @PathVariable("user_id") long userId,
